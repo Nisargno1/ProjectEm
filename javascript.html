@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			<script>
+			function calc()
+			{
+				function disamt(itmp, disper)
+				{
+					var disamt = (itmp*disper)/100;
+					return disamt;
+				}
+				
+				function netp(itmp, disper, disamt)
+				{
+					var netp = itmp - disamt(itmp, disper);
+					return netp;
+				}
+				
+				
+					var itmp = parseFloat(document.getElementById("itmp").value);
+					var disper = parseFloat(document.getElementById("disper").value);
+					
+					if(itmp>1000 || itmp<0)
+					{
+						alert("Please input between 0 and 1000");
+					}
+					else
+					{
+						if(disper>70 || disper<0)
+						{
+							alert("please enter between 0 and 70");
+						}
+						else
+						{
+							if(isNaN(itmp) || isNaN(disper))
+							{
+								alert("Please Enter a number");
+							}
+							else
+							{
+								document.getElementById("disamt").value = disamt(itmp, disper);
+								document.getElementById("netp").value = netp(itmp, disper, disamt);
+							}
+						}
+					}
+					window.onload = function()
+					{
+						document.getElementById("calc").onclick = calc;
+					}
+			}
+			</script>
+		</head>
+	<body>
+	<h2>Nisarg Patel</h2>
+	<h3>c0732022</h3>
+		<center><h1>Discount Calculator</h1>
+				<form>
+					Item Price:&nbsp&nbsp&nbsp <input type="text" id="itmp"><br><br>
+					Discount %:&nbsp <input type="text" id="disper"><br><br>
+					Discount $:&nbsp&nbsp&nbsp <input type="text" id="disamt" disabled><br><br>
+					Net Price:&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" id="netp" disabled><br><br>
+					<input type="reset" id="reset">
+					&nbsp&nbsp&nbsp <input type="button" value="Calculate" id="calc">
+				</form>
+		</center>
+	</body>
+</html>
